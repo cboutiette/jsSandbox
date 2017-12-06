@@ -58,3 +58,4 @@ ReactDOM.render(
     <VideoGamesList/>,
     document.getElementById('root3')
 )
+
