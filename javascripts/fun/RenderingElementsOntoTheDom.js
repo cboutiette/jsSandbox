@@ -48,9 +48,11 @@ class VideoGamesList extends React.Component {
             {name: 'Destiny 2'}
         ]
 
-        return videoGames.map((game, index) => (<ol>
-            <li key={index}>{game.name}</li>
-        </ol>))
+        return <ol> {
+            videoGames.map((game, index) => (
+                <li key={index}>{game.name}</li>
+            ))}
+        </ol>
     }
 }
 
