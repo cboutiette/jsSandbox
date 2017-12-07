@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import ListContacts from './ListContacts.js'
+import ListContacts from './ListContacts'
+
+// This is used as an example of how to import a property:
+// import ListContacts2 from './ListContacts'
 
 const contacts = [
     {
@@ -23,7 +26,9 @@ const contacts = [
 ]
 
 class App extends Component {
-  render() {
+    // This is an example of using the property component from ListContact.js
+    // <ListContacts2 contacts={contacts}/>
+    render() {
     return(
         <div>
             <ListContacts contacts={contacts}/>
