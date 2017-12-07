@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 
 /**
+ * Precondition: You only require a render method
  * As a stateless function you can do this:
  */
 function ListContacts (props)
@@ -27,6 +28,7 @@ function ListContacts (props)
 
 
 /**
+ * Usage: If you require more than a render method this may be the preferred method
  * As a class component you can do the following:
  */
 class ListContactsClassComponent extends Component
