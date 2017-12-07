@@ -27,8 +27,8 @@ function ListContacts (props)
 }
 
 /**
- * Even more compact example of the Contacts Component.
- * This also shows how to export a property as well
+ * Even more compact example of the ES6 function with an implicit return
+ * This also shows how to export a function inline
  */
 export const ContactsList2 = (props) => (
     <ol className='contact-list' >

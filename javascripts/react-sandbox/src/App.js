@@ -26,7 +26,7 @@ const contacts = [
 ]
 
 class App extends Component {
-    // This is an example of using the property component from ListContact.js
+    // This is an example of using an ES6 function with an implicit return from ListContact.js
     // <ListContacts2 contacts={contacts}/>
     render() {
     return(
