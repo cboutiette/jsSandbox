@@ -26,13 +26,20 @@ class App extends Component {
                 "avatarURL": "http://localhost:5001/tyler.jpg"
             }
         ]
-        }
+    }
+
+    removeContact = (contact) => {
+        this.setState((prevState) => ({
+            contacts: prevState.contacts.filter(c => c.id !== contact.id)
+        }))
+    }
+
     // This is an example of using an ES6 function with an implicit return from ListContact.js
     // <ListContacts2 contacts={contacts}/>
     render() {
     return(
         <div>
-            <ListContacts contacts={this.state.contacts}/>
+            <ListContacts OnDeleteContact={this.removeContact} contacts={this.state.contacts}/>
         </div>
     )
   }
