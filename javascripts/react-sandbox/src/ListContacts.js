@@ -53,6 +53,7 @@ export const ContactsList2 = (props) => (
  * Usage: If you require more than a render method this may be the preferred method
  * As a class component you can do the following:
  */
+/*
 class ListContactsClassComponent extends Component
 {
     render() {
@@ -77,5 +78,6 @@ class ListContactsClassComponent extends Component
         )
     }
 }
+*/
 
 export default ListContacts
