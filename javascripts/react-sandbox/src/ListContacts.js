@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 /**
  * Precondition: You only require a render method
@@ -79,5 +80,10 @@ class ListContactsClassComponent extends Component
     }
 }
 */
+
+ListContacts.propTypes = {
+    contacts: PropTypes.array.isRequired,
+    OnDeleteContact: PropTypes.func.isRequired
+}
 
 export default ListContacts
