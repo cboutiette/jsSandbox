@@ -22,16 +22,20 @@ class ListContacts extends Component {
     }
 
     render() {
+        // This is destructuring and it will make the code clearer and easier to read
+        const { contacts, onDeleteContact } = this.props
+        const { query } = this.state
+
         let showingContacts
 
-        if (this.state.query){
+        if (query){
             // if there are any special characters in our query we will escape
             // so that way we will use those characters as a string literal
             // rather than the special regex characters and 'i' ignores the case
-            const match = new RegExp(escapeRegExp(this.state.query), 'i')
-            showingContacts = this.props.contacts.filter((c) => match.test(c.name))
+            const match = new RegExp(escapeRegExp(query), 'i')
+            showingContacts = contacts.filter((c) => match.test(c.name))
         } else {
-            showingContacts = this.props.contacts
+            showingContacts = contacts
         }
 
         // .sort is javascript on arrays but sortBy allows to sort by specific property
@@ -45,7 +49,7 @@ class ListContacts extends Component {
                         className='search-contacts'
                         type='text'
                         placeholder='Search Contacts'
-                        value={this.state.query}
+                        value={query}
                         onChange={(event) => this.updateQuery(event.target.value)}
                     />
                 </div>
@@ -59,7 +63,7 @@ class ListContacts extends Component {
                                 <p>{contact.name}</p>
                                 <p>{contact.email}</p>
                             </div>
-                            <button onClick={() => this.props.onDeleteContact(contact)} className='contact-remove'>
+                            <button onClick={() => onDeleteContact(contact)} className='contact-remove'>
                                 Remove
                             </button>
                         </li>
