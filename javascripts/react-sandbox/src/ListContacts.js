@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import escapeRegExp from 'escape-string-regexp'
+import sortBy from 'sort-by'
 
 /**
  * Precondition: You only require a render method
@@ -20,9 +22,24 @@ class ListContacts extends Component {
     }
 
     render() {
+        let showingContacts
+
+        if (this.state.query){
+            // if there are any special characters in our query we will escape
+            // so that way we will use those characters as a string literal
+            // rather than the special regex characters and 'i' ignores the case
+            const match = new RegExp(escapeRegExp(this.state.query), 'i')
+            showingContacts = this.props.contacts.filter((c) => match.test(c.name))
+        } else {
+            showingContacts = this.props.contacts
+        }
+
+        // .sort is javascript on arrays but sortBy allows to sort by specific property
+        // an array of objects
+        showingContacts.sort(sortBy('name'))
+
         return (
             <div className='list-contacts'>
-                {JSON.stringify(this.state)}
                 <div className='list-contacts-top'>
                     <input
                         className='search-contacts'
@@ -33,7 +50,7 @@ class ListContacts extends Component {
                     />
                 </div>
                 <ol className='contact-list'>
-                    {this.props.contacts.map((contact) => (
+                    {showingContacts.map((contact) => (
                         <li key={contact.id} className='contact-list-item'>
                             <div className='contact-avatar' style={{
                                 backgroundImage: `url(${contact.avatarURL})`
