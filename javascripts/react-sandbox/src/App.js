@@ -25,6 +25,14 @@ class App extends Component {
         ContactsAPI.remove(contact)
     }
 
+    createContact = (contact) => {
+        ContactsAPI.create(contact).then(contact => {
+            this.setState(state => ({
+                contacts: state.contacts.concat(contact)
+            }))
+        })
+    }
+
     // This is an example of using an ES6 function with an implicit return from ListContact.js
     // <ListContacts2 contacts={contacts}/>
     render() {
@@ -38,7 +46,13 @@ class App extends Component {
             />
             <Route // You don't need to use render because you are not passing properties to the component
                 exact path='/create'
-                component={CreateContact}
+                render={({ history }) => (
+                    <CreateContact
+                        onCreateContact={(contact) => {
+                            this.createContact(contact)
+                            history.push('/')
+                        }}/>
+                )}
             />
         </div>
     )
