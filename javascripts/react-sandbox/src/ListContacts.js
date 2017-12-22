@@ -12,7 +12,7 @@ class ListContacts extends Component {
     static propTypes = {
         contacts: PropTypes.array.isRequired,
         onDeleteContact: PropTypes.func.isRequired,
-        onNavigate: PropTypes.func.isRequired
+        //onNavigate: PropTypes.func.isRequired
     }
 
     state = {

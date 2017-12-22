@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import ListContacts from './ListContacts'
 import * as ContactsAPI from './utils/ContactsAPI'
 import CreateContact from './CreateContact'
+import { Route } from 'react-router-dom'
 
 // This is used as an example of how to import a property:
 // import ListContacts2 from './ListContacts'
 
 class App extends Component {
     state = {
-        screen: 'list', // list, create
         contacts: []
     }
 
@@ -30,18 +30,16 @@ class App extends Component {
     render() {
     return(
         <div>
-            {this.state.screen === 'list' && (
-                <ListContacts
+            <Route
+                exact path='/' // Exact path is used because we need to make sure this is only rendered when you are at the base url
+                render={() => (<ListContacts
                     onDeleteContact={this.removeContact}
-                    onNavigate={() => {
-                        this.setState({screen : 'create' })
-                    }}
-                    contacts={this.state.contacts}/>
-            )}
-
-            {this.state.screen === 'create' && (
-                <CreateContact />
-            )}
+                    contacts={this.state.contacts}/>)}
+            />
+            <Route // You don't need to use render because you are not passing properties to the component
+                exact path='/create'
+                component={CreateContact}
+            />
         </div>
     )
   }
